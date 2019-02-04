@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<title>Vast Challenge 2 2017</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-2.0.0.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="node_modules/crossfilter/crossfilter.min.js" charset="utf-8"></script>
+<style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    body, html {
+        height: 100%;
+        line-height: 1.8;
+    }
+    /* Full height image header */
+    .bgimg-1 {
+        background-color: #b9bbbe;
+        background-position: center;
+        background-size: cover;
+        background-image: url("../progettoV/img/vast.jpg");
+        height: 100%;
+    }
+    .w3-bar .w3-button {
+        padding: 16px;
+    }
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide">TOP</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+            <a href="#sezione_mappa" class="w3-bar-item w3-button">MAPPA</a>
+            <a href="#sezione_barre" class="w3-bar-item w3-button"></i>BARRE</a>
+            <a href="#sezione_treemap" class="w3-bar-item w3-button"></i> TREEMAP</a>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Header with full-height image -->
+<header id="home" style="background-color: #b9bbbe; padding: 100px 0px ; height: 650px">
+<div class="bgimg-1" >
+    <div class="w3-display-left w3-text-white" style="padding:48px">
+        <p><a href="#sezione_mappa" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Go to visualization</a></p>
+    </div>
+</div>
+</header>
+
+<!-- MAPPA -->
+<div class="w3-container" style="padding:100px 16px 55px 60px;  background-color: lightblue;" id="sezione_mappa">
+    <span style="float: left; padding-top: 60px">
+        <div style="font-size: 12.5pt"> Seleziona Mese</div>
+        <div id="sel"></div>
+        <div style="padding-top: 30px;  font-size: 12.5pt">Seleziona Giorno</div>
+        <div><select id="sel2" ></select></div>
+        <div style="padding-top: 30px; font-size: 12.5pt">Seleziona Ora</div>
+        <div ><select id="sel3"></select></div>
+        <div style="padding-top: 30px; font-size: 12.5pt">Seleziona agente chimico </div>
+        <div><select id="sel4"></select></div>
+    </span>
+
+    <span style="float: left">
+        <svg id="map" width="600pt" height="350pt" viewBox="70 -10 70 70" style="padding-right:10pt;"></svg>
+
+    </span>
+
+    <span>
+        <div style="padding-top: 130px">
+            <svg id="frec" width="200px" height="200px" style="background: rgba(0,10,255,0.05)">
+                <defs>
+                    <marker id="marker_arrow" markerHeight="10" markerWidth="10" markerUnits="strokeWidth" orient="auto" refX="0" refY="0" viewBox="-5 -5 10 10">
+                    <path d="M 0,0 m -5,-5 L 5,0 L -5,5 Z" fill="black"></path>
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+
+    </span>
+
+</div>
+
+<!-- BARRE -->
+<div class="w3-container" style="padding:128px 16px" id="sezione_barre">
+    <span style="float: left">
+        <svg id="svg_barre"></svg>
+    </span>
+    <span style="float: left; padding-left: 30px;">
+        <span>
+        <div id ="labelSens"></div>
+        <div style="padding-left: 60px;"><select id="selSens"></select>
+        <div id="bott_indietro" style="padding-top: 160px"></div>
+        </div>
+        </span>
+    </span>
+
+</div>
+
+<!-- TREEMAP -->
+<div class="w3-container" style="padding:50px 16px" id="sezione_treemap">
+    <p id="chart">
+    </p>
+    <div id="domainDrillDown"></div>
+</div>
+
+
+<!-- FINE (TORNA SU) -->
+<footer class="w3-center w3-black w3-padding-64">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+</footer>
+
+
+
+</body>
+<script>
+    let svg = d3.select("#map");
+</script>
+<script src="dati.js" charset="utf-8"></script>
+<script src="mappa.js" charset="utf-8"></script>
+<script src="selettori.js" charset="utf-8"></script>
+<script src="frecce_vento.js" charset="utf-8"></script>
+<script src="bar.js" charset="utf-8"></script>
+<script src="prova_zoom.js" charset="utf-8"></script>
+
+
+</html>
