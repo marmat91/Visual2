@@ -147,10 +147,7 @@ function tree(data){
             .append("title")
             .text(function(d) { return d.data.name + " (" + (d.value) + ")"; });
 
-        children.append("text")
-            .attr("class", "ctext")
-            .text(function(d) { return d.data.name; })
-            .call(text2);
+
 
         g.append("rect")
             .attr("class", "parent")
@@ -162,10 +159,12 @@ function tree(data){
             .attr("class", "ptext")
             .attr("dy", ".65em")
         t.append("tspan")
-            .text(function(d) { return d.data.name; });
+            .text(function(d) { return d.data.name; })
+            .attr("style", "font-size: 10pt");
         t.append("tspan")
             .attr("dy", "1.0em")
-            .text(function(d) { return (d.value.toFixed(2)); });
+            .text(function(d) { return (d.value.toFixed(2)); })
+            .attr("style", "font-size: 10pt");
         t.call(text);
 
         //imposto i colori
@@ -223,11 +222,6 @@ function tree(data){
             });
     }
 
-    function text2(text) {
-        text.attr("x", function(d) { return x(d.x0 + d.x1) - this.getComputedTextLength() - 6; })
-            .attr("y", function(d) { return y(d.y0 + d.y1) - 6; })
-            .style("opacity", function(d) { return this.getComputedTextLength() < x(d.x0 + d.x1) - x(d.x0) ? 1 : 0; });
-    }
 
     function rect(rect) {
         rect.attr("x", function(d) { return x(d.x0); })
