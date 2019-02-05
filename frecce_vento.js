@@ -110,7 +110,8 @@ function arrow(data){
     x=x+50;
     x=(200-x);
     y=(200-y);
-
+    console.log(x)
+    if ( isNaN(x) || isNaN(y)){x=100; y=100;}
     var nodeSize = [1,4];
     var minmax = [0.1, 6.8];
     var nodeScale = d3.scaleLinear()
@@ -127,12 +128,16 @@ function arrow(data){
         .attr("marker-end", "url(#marker_arrow)")
         .attr("marker-start", "url(#marker_arrow)");
 
+
+    var wind_leg="";
+    if (isNaN(vel)){wind_leg="DATI NON PRESENTI"}
+    else {wind_leg="Wind Speed: "+vel.toFixed(2)+" km/h"}
     var legVel = d3.select("#frec").append("g")
         .attr("transform","translate(30 ,10)")
         .append("text")
         .attr("fill", "red")
         .style("font-size","10pt")
-        .text("Wind Speed: "+vel.toFixed(2)+" km/h")
+        .text(wind_leg);
     var N = d3.select("#frec").append("g")
         .attr("transform","translate(95 ,35)")
         .append("text")
@@ -140,7 +145,7 @@ function arrow(data){
         .style("font-size","15pt")
         .style("font-family", "Informal Roman")
         .style("font-weight","bold")
-        .text("N")
+        .text("N");
     var S = d3.select("#frec").append("g")
         .attr("transform","translate(95 ,175)")
         .append("text")
