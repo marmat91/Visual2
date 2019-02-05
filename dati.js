@@ -1,4 +1,4 @@
-let tipi_agenti= ["Tutti", "AGOC-3A", "Appluimonia", "Chlorodinine", "Methylosmolene"]
+let tipi_agenti= ["Tutti", "AGOC-3A", "Appluimonia", "Chlorodinine", "Methylosmolene"];
 let posizione=[{nome: "Roadrunner Fitness Electronics", x:89, y:27},
     {nome: "Kasios Office Furniture", x:90, y:21},
     {nome:"Radiance ColourTek", x:109, y:26},
@@ -16,14 +16,13 @@ let posizione=[{nome: "Roadrunner Fitness Electronics", x:89, y:27},
 let posizione_fabb=[{nome: "Roadrunner Fitness Electronics", x:89, y:-27, cod:"RFE"},
     {nome: "Kasios Office Furniture", x:90, y:-21, cod:"KOF"},
     {nome:"Radiance ColourTek", x:109, y:-26, cod:"RCT"},
-    {nome:"Indigo Sol Boards", x:120, y:-22, cod:"ISB"}]
+    {nome:"Indigo Sol Boards", x:120, y:-22, cod:"ISB"}];
 let md;
 let sd;
 
 d3.json("csv/gerarchie.json", function(data2) {
-    console.log(data2)
     tree(data2);
-})
+});
 d3.json("csv/dati_completi_2.json", function(data) { //vento
     md = data.slice();
 
@@ -37,7 +36,5 @@ d3.json("csv/dati_completi_2.json", function(data) { //vento
         createSelettoreBarSensor(data1);
 
 
-//console.log(md);
-//console.log(sd);
 })
 });

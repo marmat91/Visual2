@@ -1,6 +1,6 @@
 function tree(data){
     var margin = {top: 10, right: 0, bottom: 0, left: 0},
-        width = 1300, //640
+        width = 1300,
         height = 570,
         formatNumber = d3.format(",d"),
         transitioning;
@@ -214,7 +214,7 @@ function tree(data){
 
     function text(text) {
         text.selectAll("tspan")
-            .attr("x", function(d) { return x(d.x0) + 6; })
+            .attr("x", function(d) { return x(d.x0) + 6; });
         text.attr("x", function(d) { return x(d.x0) + 6; })
             .attr("y", function(d) { return y(d.y0) + 10; })
             .style("opacity", function(d) {
@@ -228,12 +228,10 @@ function tree(data){
             .attr("y", function(d) { return y(d.y0); })
             .attr("width", function(d) {
                 return x(d.x0 + d.x1) - x(d.x0);
-                //return (d.x1 -d.x0);
 
             })
             .attr("height", function(d) {
                 return y(d.y0 + d.y1) - y(d.y0);
-                //return y(d.y1 - d.y0);
 
             })
             ;

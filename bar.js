@@ -1,13 +1,12 @@
-
-let dim_mese="tutti"
-let dim_giorno="tutti"
+let dim_mese="tutti";
+let dim_giorno="tutti";
 
 function barre (data) {
     d3.select("#svg_barre").selectAll("g").remove();
     d3.select("#bott_indietro").selectAll("button").remove();
 
-    var dati_chimici=[]
-    var primo=0
+    var dati_chimici=[];
+    var primo=0;
     for (i=1; i<tipi_agenti.length; i++){
         var cf	=	crossfilter(sd);
         if (sensori!="Tutti"){
@@ -54,7 +53,7 @@ function barre (data) {
         }
 
     }
-    data=dati_chimici
+    data=dati_chimici;
     var margin = {top: 20, right: 100, bottom: 30, left: 40},
     width  = 1000 - margin.left - margin.right,
     height = 500  - margin.top  - margin.bottom;

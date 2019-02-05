@@ -1,22 +1,18 @@
-var date_all =['Tutti i mesi', 'Aprile', 'Agosto', 'Dicembre']
-let mese="Tutti i mesi"
-let giorno="Tutti i giorni"
-let ora="Tutte le ore"
-let agenti="Tutti"
-let sensori="Tutti"
+var date_all =['Tutti i mesi', 'Aprile', 'Agosto', 'Dicembre'];
+let mese="Tutti i mesi";
+let giorno="Tutti i giorni";
+let ora="Tutte le ore";
+let agenti="Tutti";
+let sensori="Tutti";
 
 function createSelettoreMappa(data1, data) {
     giorni("Tutti i mesi");
-    //console.log(dati1[0]);
-    //console.log(sd);
     var cf	=	crossfilter(sd);
     var dateT = cf.dimension(function(d){ return d.data_completa});
     var date = dateT.group().all();
     var tbYear = d3.select("#sel").append("select")
         .style("width","200px")
         .on('change',function(d) {
-            //console.log(d)
-            //console.log(mese_anno);
             mese=this.value;
             giorno="Tutti i giorni";
             ora="Tutte le ore";
@@ -32,7 +28,6 @@ function createSelettoreMappa(data1, data) {
         .append("option")
         .attr('style', 'width:100px; height:30px; font-size: 14pt; font-weight: bold')
         .text(function(d) {
-            //console.log(d);
             return d;
         });
 }
@@ -79,7 +74,6 @@ function giorni (mese, data1, data){
         .append("option")
         .attr('style', 'width:100px; height:30px; font-size: 14pt; font-weight: bold')
         .text(function(d) {
-            //console.log(d);
             return d;
         });
 }
@@ -103,7 +97,6 @@ function ore(ore_t, data1, data){
             ore_g.push(i +":00");
         }
     }
-    console.log(ore_g)
     var tbYear = d3.select("#sel3")
         .style("width","200px")
         .on('change',function(d) {
@@ -122,7 +115,6 @@ function ore(ore_t, data1, data){
         .append("option")
         .attr('style', 'width:100px; height:30px; font-size: 14pt; font-weight: bold')
         .text(function(d) {
-            //console.log(d);
             return d;
         });
 }
@@ -156,15 +148,8 @@ function createSelettoreBarSensor(data1){
         .text("Seleziona il sensore:");
     var sAgenti2 = d3.select("#selSens")
         .on('change',function(d) {
-            //console.log(d)
-            //console.log(mese_anno);
             sensori=this.value;
             barre (data1);
-            /* DA AGGIUSTARE DOPO
-            if (sensori!="Tutti") {updateGrafo(data1);}
-            else {updateGrafoTutti(data1); }
-            */
-
         })
         .attr('name','selettore')
         .selectAll("option")

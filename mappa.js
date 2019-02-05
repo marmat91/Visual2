@@ -14,11 +14,11 @@ let color = d3.scaleOrdinal()
 
 let posizioniX = d3.scaleOrdinal()
     .domain (["1","2","3","4","5","6","7","8","9"])
-    .range([62,66,76,88,103,102,89,74,119])
+    .range([62,66,76,88,103,102,89,74,119]);
 
 let posizioniY = d3.scaleOrdinal()
     .domain (["1","2","3","4","5","6","7","8","9"])
-    .range([-21,-35,-41,-45,-43,-22,-3,-7,-42])
+    .range([-21,-35,-41,-45,-43,-22,-3,-7,-42]);
 
 function creaMappa (dati) {
     for (i=1; i<tipi_agenti.length; i++){
@@ -63,9 +63,6 @@ function creaMappa (dati) {
         .range(nodeSize)
         .domain(minmax);
 
-
-
-    console.log(color(agenti))
     var node = svg.selectAll("rect")
         .data(nodi_con_valori).enter()
         .append("rect")
@@ -78,7 +75,7 @@ function creaMappa (dati) {
         .on("mouseout",  function (d) { removePopovers2(); });
 
     var circle_all = svg.selectAll("my circle")
-        .data(posizione_fabb)
+        .data(posizione_fabb);
 
     var elemEnter = circle_all.enter()
         .append("g")
@@ -88,7 +85,7 @@ function creaMappa (dati) {
     var circle = elemEnter //LE AZIENDE
         .append("circle")
         .attr("fill", "black")
-        .attr("r", 2.5)
+        .attr("r", 2.5);
 
     elemEnter
         .append("text")
@@ -119,7 +116,7 @@ function creaMappa (dati) {
         .attr("fill", "black")
         .attr("dy", ".35em")
         .style("font-size","1.5pt")
-        .text(function (d) { return d.nome; })
+        .text(function (d) { return d.nome; });
     legend.append("text")
         .attr("x", 48)
         .attr("y",6+0.7)
@@ -129,13 +126,13 @@ function creaMappa (dati) {
         .text(function(d) { return d.cod ;});
 
 
-    var min_max_label=0
+    var min_max_label=0;
     var elem_leg = svg.selectAll("g legend")
-        .data(minmax)
+        .data(minmax);
     var elemEnter_leg = elem_leg.enter()
         .append("g")
         .attr("class", "legenda_minmax")
-        .attr("transform","translate(77 ,53.5)")
+        .attr("transform","translate(77 ,53.5)");
     var bar_leg = elemEnter_leg.append("rect")
         .attr("width", function(d){return nodeScale(d);})
         .attr("height",6)
@@ -187,13 +184,11 @@ function updateGrafo(grafo){
     var dateT = cf.dimension(function(d){ return d.Monitor});
     var date = dateT.group().reduceSum(function(d) { return d.Reading; }),
         datiGroup=date.all();
-    console.log (datiGroup);
 
     var cf=crossfilter(datiGroup);
     var tb=cf.dimension(function(d){ return d.value});
     var top=tb.top(1);
     var bott=tb.bottom(1);
-    console.log(datiGroup);
     var nodeSize = [0.5,9];
     var minmax = [bott[0].value, top[0].value];
     var nodeScale = d3.scaleLinear()
@@ -300,7 +295,6 @@ function updateGrafoTutti(grafo){
     var dateT = cf.dimension(function(d){ return d.Monitor});
     var date = dateT.group().reduceSum(function(d) { return d.Reading; }),
         datiGroup=date.all();
-    console.log (datiGroup);
     for (j=0; j<datiGroup.length; j++){
         for (k=0; k<nodi_con_valori.length; k++) {
             if (nodi_con_valori[k].nome == datiGroup[j].key) {
@@ -308,12 +302,10 @@ function updateGrafoTutti(grafo){
             }
         }
     }
-    console.log(nodi_con_valori)
     var cf=crossfilter(datiGroup);
     var tb=cf.dimension(function(d){ return d.value});
     var top=tb.top(1);
     var bott=tb.bottom(1);
-    console.log(datiGroup);
     var nodeSize = [0.5,9];
     var minmax = [bott[0].value, top[0].value];
     var nodeScale = d3.scaleLinear()
@@ -366,7 +358,6 @@ function removePopovers2 () {
     });
 }
 function showPopover2 (d) {
-    console.log(d)
     if(agenti=="Tutti") { var titolo = d.nome }
     else {var titolo = d.key}
 

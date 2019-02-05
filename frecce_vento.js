@@ -97,7 +97,7 @@ function arrow(data){
         var velocita = cf.groupAll().reduceSum(function(d){ return d.WindSpeed}).value();
         var vel = velocita/cont;
         }
-    //da rivedere è cambiata la scala (fatto)
+    //da rivedere è cambiata la scala (OK)
     var y=(direz*100)/180;
     if(y>100){y=(y-200)*(-1)}
     y=y+50;
@@ -108,8 +108,8 @@ function arrow(data){
         var x= 100-z
     }
     x=x+50;
-    x=(200-x)
-    y=(200-y)
+    x=(200-x);
+    y=(200-y);
 
     var nodeSize = [1,4];
     var minmax = [0.1, 6.8];
@@ -126,7 +126,7 @@ function arrow(data){
         .attr('stroke', 'black')
         .attr("marker-end", "url(#marker_arrow)")
         .attr("marker-start", "url(#marker_arrow)");
-    ;
+
     var legVel = d3.select("#frec").append("g")
         .attr("transform","translate(30 ,10)")
         .append("text")
