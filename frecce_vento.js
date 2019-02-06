@@ -3,7 +3,7 @@ function arrow(data){
     d3.select("#frec").selectAll("g").remove();
     d3.select("#frec").selectAll("image").remove();
     var immagine=d3.select("#frec").append('svg:image')
-        .attr("xlink:href", "../progettoV/img/stella.png")
+        .attr("xlink:href", "img/stella.png")
         .attr("x", "37.5")
         .attr("y", "37.5")
         .attr("width", "125")
