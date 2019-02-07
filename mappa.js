@@ -79,7 +79,7 @@ function creaMappa (dati) {
 
     var elemEnter = circle_all.enter()
         .append("g")
-        .attr("transform", function(d){return "translate("+d.x+","+(40+d.y)+")"})
+        .attr("transform", function(d){return "translate("+d.x+","+(42+d.y)+")"})
 
 
     var circle = elemEnter //LE AZIENDE
